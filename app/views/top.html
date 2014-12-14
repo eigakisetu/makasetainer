@@ -1,0 +1,57 @@
+<div id="windowLoad" ng-show="windowLoad">
+	<p id="logo01"><img src="assets/img/logo01.svg" alt="makasetaine"></p>
+	<p id="logo02"><img src="assets/img/logo02.svg" alt="makasetaine"></p>
+	<p id="logo03"><img src="assets/img/logo03.svg" alt="makasetaine"></p>
+	<p id="logo04"><img src="assets/img/logo04.svg" alt="makasetaine"></p>
+</div>
+
+<div class="content" ng-class="{active:top}" ng-show="top">
+
+	<div ng-hide="windowLoad">
+		<p id="logo" ng-class="{active:top}">
+			<img src="assets/img/logo.svg" alt="makasetaine">
+		</p>
+	</div>
+
+	<div class="inputArea">
+	<p class="inputHeading"><label for="uniqueID">投稿ID(ユニーク)</label></p>
+	<input type="text" id="uniqueID" ng-model="uniqueID">
+	</div>
+
+	<div class="inputArea">
+	<p class="inputHeading"><label for="category">カテゴリ</label></p>
+	<div id="selectArea">
+		<div>
+			<select id="category" ng-model="category" ng-options="category for category in categories">
+				<option value="">選択してください</option>
+			</select>
+		</div>
+	</div>
+	</div>
+
+	<div class="inputArea">
+	<p class="inputHeading"><label for="content">お困り内容</label></p>
+	<textarea id="content" ng-model="content" style="display:block"></textarea>
+	</div>
+
+	<div id="submitArea">
+		<button id="submit" ng-click="submit()">助けて!</button>
+	</div>
+</div>
+
+<p class="loading" ng-show="loading"><img src="assets/img/loading.gif" alt="マカセテイナーズに連絡を取っています"></p>
+
+<div class="content" ng-show="top==false" ng-class="{active:top==false}">
+
+	<p id="logo" ng-class="{active:top==false}">
+		<img src="assets/img/logo.svg" alt="makasetaine">
+	</p>
+
+	<ul class="answerArea">
+	    <li ng-repeat="answer in answeres track by $index">{{answer}}</li>
+	</ul>
+
+	<p class="btn" ng-click="reload()">戻る</p>
+
+</div>
+
